@@ -1,0 +1,43 @@
+---------------------------------------------------------------------
+配置git全局的用户名及邮箱（以github为例）
+
+1、在命令行下输入以下命令
+
+git config --global user.name "user.name"
+
+git config --global user.email "yourmail@youremail.com.cn"
+
+完成后输入git config -l 查看配置信息
+
+2、本地git想与github建立连接就需要密钥，以下是生成密钥
+
+ssh-keygen -t rsa -C "你的邮箱名"
+
+执行完上面命令后，一路回车就行。会在一个c盘、当前用户下的.ssh目录下生成密钥。
+
+复制idb_rsa.pub里面的内容到github中SSH和GPG密钥处，添加
+
+3、测试连接
+
+在命令行下输入命令 ssh -T git@github.com，出现 You've successfully 即连接成功！
+--------------------------------------------------------------------------------------------
+
+使用git将本地代码上传到github上
+
+1、首先是要在github上新建一个仓库，用来存放即将上传的代码。
+
+2、命令行下进入要上传代码的目录下进行操作
+
+先关联本地仓库与github仓库 git remote add origin github仓库地址（ssh）
+
+1>初始化本地仓库 git init
+
+2>查看没上传过的代码 git status，红颜色的东西就是未提交的
+
+3>将需提交的代码存放在暂存区 git add 文件名称。git add . 存放全部
+
+4>提交代码 git commit -m "备注信息"
+
+5>push到github上，git push -u origin master
+
+

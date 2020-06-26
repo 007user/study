@@ -1,0 +1,22 @@
+乌班图中找不到ifconfig（配置正确会有三个ip地址，一般使用第二个是远程连接地址）
+
+apt show nginx  (有结果可且可以正常访问localhost，说明没问题)
+
+sudo apt install nginx -y
+
+sudo ufw status 查看防火墙状态
+
+sudo apt-get install openssh-server 打开ssh服务，这样另一个电脑才能连接上（ssh可以用自带的或者git的）失败会出现拒绝连接，
+端口号为22，这时看看打开ssh服务是否打开了
+
+service sshd status 查看工具状态
+
+当出现锁啥的，可能是由个进程给占用了。
+
+先使用命令：ps -aux|grep apt 找出占用 apt 的进程号，再使用 sudo kill 进程号杀掉
+
+sudo apt-get update 更新系统资源
+
+sudo apt install net-tools 安装net工具（该工具里有ifconfig）这个安装成功了，ifconfig就有结果
+
+最后使用ssh登录即可。eg: ssh 主机名@地址名   回车 输入密码
